@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Page</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+      display: flex;
+      justify-content:space-between;
+      align-items: center;
+      background-color: #831238;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px 10px 0 0;
+    }
+    .header .menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .header .menu a:hover {
+            background-color: #6d0f2a;
+        }
+
+        .header .icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .container {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .upcoming-events {
+            background-color: #831238;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #f4f4f4;
+        }
+
+        table .enroll {
+            background-color: #66bb6a;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        table .enroll:hover {
+            background-color: #5aa456;
+        }
+        
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+
+        .footer button {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .footer button:hover {
+            background-color: #d32f2f;
+        }
+
+        .footer .icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .footer .success {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer .success img {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+
+        #search {
+            width: 100%;
+            padding: 10px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .image-container {
+            transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        .image-container.show {
+            display: block;
+            max-height: 500px; /* Adjust based on your image size */
+            opacity: 1;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            display: block;
+            margin: 10px auto;
+        }
+
+        .image-container .enroll {
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="left">
+            <span>&#127760;</span> LANG
+        </div>
+        <div class="menu">
+            <a href="student.profile.html">Profile</a>
+            <a href="student.viewevents.html">View an event</a>
+            <a href="student.upcomingevents.html">Upcoming events</a>
+            <a href="student.eventsparticipated.html">Events participated</a>
+            <a href="student.approval.html">Approval</a>
+        </div>
+        <div class="right">
+            <span class="icon">&#128276;</span>
+            <span class="icon">&#128100;</span>
+        </div>
+    </div>
+    <div class="container">
+        <div class="upcoming-events">UPCOMING EVENTS</div>
+        <input id="search" type="text" placeholder="Search events or venues" autocomplete="off">
+        <table id="events-table">
+            <thead>
+                <tr>
+                    <th>EVENT NAME</th>
+                    <th>EVENT VENUE</th>
+                    <th>DATE & TIME</th>
+                    <th>TYPE</th>
+                    <th>ELIGIBILITY</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Event 1</td>
+                    <td>Venue 1</td>
+                    <td>01/01/2024 (10:00 AM)</td>
+                    <td>Technical</td>
+                    <td>Yes</td>
+                    <td>
+                        <button onclick="toggleImage(this)" class="enroll">view</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        <div class="image-container hidden">
+                            <img src="Chancellor.jpg" alt="Chancellor">
+                            <button class="enroll" onclick="enrollEvent(this)">ENROLL</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Event 2</td>
+                    <td>Venue 2</td>
+                    <td>02/01/2024 (02:00 PM)</td>
+                    <td>Non-Technical</td>
+                    <td>No</td>
+                    <td>
+                        <button onclick="toggleImage(this)" class="enroll">view</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        <div class="image-container hidden">
+                            <img src="Chancellor.jpg" alt="Chancellor">
+                            <button class="enroll" onclick="enrollEvent(this)">ENROLL</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Event 3</td>
+                    <td>Venue 3</td>
+                    <td>03/01/2024 (09:00 AM)</td>
+                    <td>Technical</td>
+                    <td>Yes</td>
+                    <td>
+                        <button onclick="toggleImage(this)" class="enroll">view</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        <div class="image-container hidden">
+                            <img src="Chancellor.jpg" alt="Chancellor">
+                            <button class="enroll" onclick="enrollEvent(this)">ENROLL</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Event 4</td>
+                    <td>Venue 4</td>
+                    <td>04/01/2024 (01:00 PM)</td>
+                    <td>Non-Technical</td>
+                    <td>Yes</td>
+                    <td>
+                        <button onclick="toggleImage(this)" class="enroll">view</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        <div class="image-container hidden">
+                            <img src="Chancellor.jpg" alt="Chancellor">
+                            <button class="enroll" onclick="enrollEvent(this)">ENROLL</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Event 5</td>
+                    <td>Venue 5</td>
+                    <td>05/01/2024 (11:00 AM)</td>
+                    <td>Technical</td>
+                    <td>No</td>
+                    <td>
+                        <button onclick="toggleImage(this)" class="enroll">view</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        <div class="image-container hidden">
+                            <img src="Chancellor.jpg" alt="Chancellor">
+                            <button class="enroll" onclick="enrollEvent(this)">ENROLL</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="footer">
+        <div class="success">
+        </div>
+        <div class="buttons">
+            <a href="student.viewevents.html"><button id="prev-btn">&#129044;</button></a>
+            <a href="student.eventsparticipated.html"><button id="next-btn">&#129046;</button></a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('search').addEventListener('input', function() {
+            const searchText = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#events-table tbody tr');
+
+            rows.forEach(row => {
+                const eventName = row.querySelector('td').textContent.toLowerCase();
+                const eventVenue = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                
+                if (eventName.includes(searchText) || eventVenue.includes(searchText)) {
+                    row.classList.remove('hidden');
+                } else {
+                    row.classList.add('hidden');
+                }
+            });
+        });
+
+        function toggleImage(button) {
+            const imageContainer = button.closest('tr').nextElementSibling.querySelector('.image-container');
+            imageContainer.classList.toggle('show');
+            imageContainer.classList.toggle('hidden');
+        }
+
+        function enrollEvent(button) {
+            button.textContent = 'ENROLLED';
+            button.disabled = true;
+        }
+    </script>
+</body>
+</html>

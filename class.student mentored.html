@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>View Student</title>
+  <style>
+    body {
+      background-color: #f0f0f0;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 800px;
+      margin: 20px auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #831238;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px 10px 0 0;
+    }
+    .header .menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .header .menu a:hover {
+            background-color: #6d0f2a;
+        }
+    .lang {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    
+
+    .notification {
+      display: flex;
+      align-items: center;
+    }
+
+    .bell, .user {
+      font-size: 1.5em;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+
+    .button-group {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .button-group .button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .button-group .button:hover {
+      background-color: #45a049;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: white;
+      border-top: 1px solid #ddd;
+      border-radius: 0 0 10px 10px;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+
+    .footer .buttons {
+      display: flex;
+    }
+
+    .footer .buttons a {
+      text-decoration: none;
+      color: white;
+    }
+
+    .footer .buttons button {
+      background-color: #f44336;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .footer .buttons button:hover {
+      background-color: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="lang">
+        LANG
+      </div>
+      <div class="menu">
+        <a href="class.view student.html">View Student</a>
+        <a href="class.student mentored.html">student mentored</a>
+        <a href="class.approval.html">Approve</a>
+    </div>
+      <div class="notification">
+        <span class="bell">🔔</span>
+        <span class="user">👤</span>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>REGISTER NUMBER</th>
+          <th>EVENT NAME</th>
+          <th>NAME</th>
+          <th>EMAIL ID</th>
+          <th>CURRENT STATUS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>9876543</td>
+          <td>EVENT NAME</td>
+          <td>KRISHNA</td>
+          <td>abcdefgh@gmail.com</td>
+          <td>PENDING</td>
+        </tr>
+        <tr>
+          <td>12345678</td>
+          <td>EVENT NAME</td>
+          <td>BALA</td>
+          <td>abcdefgh@gmail.com</td>
+          <td>ONGOING</td>
+        </tr>
+        <tr>
+          <td>21158421</td>
+          <td>EVENT NAME</td>
+          <td>ARAVIND</td>
+          <td>abcdefgh@gmail.com</td>
+          <td>ONGOING</td>
+        </tr>
+        <tr>
+          <td>42110250</td>
+          <td>EVENT NAME</td>
+          <td>ARYAN</td>
+          <td>abcdefgh@gmail.com</td>
+          <td>ONGOING</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="footer">
+      <div class="success">
+      </div>
+      <div class="buttons">
+        <a href="class.view student.html"><button>&#129044;</button></a>
+        <a href="class.approval.html"><button>&#129046;</button></a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function viewStudentDetails() {
+      alert('Implement your view student details functionality here.');
+      // Implement your logic to view student details
+    }
+  </script>
+</body>
+</html>

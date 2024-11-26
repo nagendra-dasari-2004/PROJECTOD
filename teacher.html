@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Choice</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #831238; /* Dark purple background */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .header {
+            background-color: #831238;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            margin-top: auto;
+    }
+    .header .menu {
+        display: flex;
+        gap: 20px;
+    }
+    .header .menu a {
+      color: white;
+      text-decoration: none;     
+     }
+
+    .header .menu a:hover {
+      text-decoration: underline;
+    }
+    .header .icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            background-color: #f0e6dc;/* Light cream background for the card */
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+        }
+        .container h1 {
+            margin-bottom: 60px;
+            font-size: 24px;
+            color: #831238;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .button-group button {
+            background-color:#831238; /* Dark purple for buttons */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .button-group button:hover {
+            background-color:#831238;/* Lighter shade for hover */
+        }
+        .icon {
+            position: absolute;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .header-icon {
+            top: 20px;
+        }
+        .footer-icon {
+            bottom: 20px;
+        }
+        .left-icon {
+            left: 20px;
+        }
+        .right-icon {
+            right: 20px;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        .footer button {
+        background-color: #f44336;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 10px;
+        }
+        .footer button:hover {
+        background-color: #d32f2f;
+        }
+        .footer .success {
+            display: flex;
+            align-items: center;
+        }
+        .footer .success img {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>SELECT YOUR CHOICE</h1>
+        <div class="button-group">
+            <a href="class.view student.html"><button class="enroll" >CLASS</button></a>
+            <a href="mentor.student merntored.html"><button class="enroll" >MENTOR</button></a>
+            <a href="event.veiw event .html"><button class="enroll" >EVENT</button></a>
+        </div>
+        <div class="icon header-icon right-icon">&#128276;</div> <!-- Bell icon -->
+        <div class="icon header-icon left-icon">&#128100;</div> <!-- User icon -->
+        <div class="footer">
+            <div class="success">
+            </div>
+            <div class="icon footer-icon left-icon"><a href="login.html"><button class="enroll" >&#129044;
+            </button></a></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student Details</title>
+    <style>
+        /* Global styles */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container styles */
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background-color: #f5f5f5;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            overflow: hidden; /* Ensure rounded corners are visible */
+        }
+
+        /* Header styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #831238;
+            color: white;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .header .left {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: bold;
+        }
+
+        .header .menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .header .menu a:hover {
+            background-color: #6d0f2a;
+        }
+
+        .header .right {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .header .right .icon {
+            cursor: pointer;
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .header .right .icon:hover {
+            transform: scale(1.1);
+        }
+
+        /* Form styles */
+        form {
+            padding: 20px;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        input {
+            padding: 10px;
+            width: calc(100% - 20px);
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer styles */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer button {
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .footer button:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    </br>
+    <div class="container">
+        <div class="header">
+            <div class="left">
+                <span>&#127760;</span> <span style="font-size: 18px;">LANG</span>
+            </div>
+            <div class="menu">
+                <a href="mentor.student merntored.html">View Student</a>
+                <a href="mentor.add student.html">Add Student</a>
+            </div>
+            <div class="right">
+                <span class="icon" title="Notifications">&#128276;</span>
+                <span class="icon" title="Settings">&#128100;</span>
+            </div>
+        </div>
+        <h1>ADD STUDENT DETAILS</h1>
+        <form id="studentForm">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter name" required>
+            
+            <label for="regNo">Register Number</label>
+            <input type="text" id="regNo" name="regNo" placeholder="Enter register number" required>
+            
+            <label for="purpose">Purpose</label>
+            <input type="text" id="purpose" name="purpose" placeholder="Enter purpose" required>
+            
+            <label for="duration">Duration</label>
+            <input type="text" id="duration" name="duration" placeholder="Enter duration" required>
+            
+            <label for="department">Department</label>
+            <input type="text" id="department" name="department" placeholder="Enter department" required>
+            
+            <label for="section">Section</label>
+            <input type="text" id="section" name="section" placeholder="Enter section" required>
+            
+            <button type="button" class="button" onclick="addStudent()">ADD</button>
+        </form>
+        <div class="footer">
+            <div class="success">
+            </div>
+            <div class="buttons">
+                <a href="mentor.student merntored.html"><button>&#129044;</button></a>
+              </div>
+        </div>
+    </div>
+
+    <script>
+        function addStudent() {
+            const name = document.getElementById('name').value.trim();
+            const regNo = document.getElementById('regNo').value.trim();
+            const purpose = document.getElementById('purpose').value.trim();
+            const duration = document.getElementById('duration').value.trim();
+            const department = document.getElementById('department').value.trim();
+            const section = document.getElementById('section').value.trim();
+
+            if (name && regNo && purpose && duration && department && section) {
+                alert('Student details added successfully!');
+                document.getElementById('studentForm').reset();
+            } else {
+                alert('Please fill out all fields.');
+            }
+        }
+    </script>
+</body>
+</html>

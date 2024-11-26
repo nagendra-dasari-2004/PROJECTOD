@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #831238;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .header .menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .header .menu a:hover {
+            background-color: #6d0f2a;
+        }
+
+        .header .icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container h1 {
+            font-size: 24px;
+            color: #831238;
+        }
+
+        .container #qrcode {
+            margin: 20px 0;
+        }
+
+        .container p {
+            font-size: 18px;
+            color: #831238;
+        }
+
+        .container .generate-qr-btn {
+            background-color: #66bb6a;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .container .generate-qr-btn:hover {
+            background-color: #5aa456;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer .icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .footer button {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .footer button:hover {
+            background-color: #d32f2f;
+        }
+
+        .footer .success {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer .success img {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="left">
+            <span>&#127760;</span> LANG
+        </div>
+        <div class="menu">
+            <a href="event.veiw event .html">View an event</a>
+            <a href="event.add event.html">Add an event</a>
+            <a href="event.ongoing event.html">Ongoing event</a>
+            <a href="event.attendence.html">Attendance</a>
+        </div>
+        <div class="right">
+            <span class="icon">&#128276;</span>
+            <span class="icon">&#128100;</span>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Scan the QR for Attendance</h1>
+        <div id="qrcode"></div>
+        <button class="generate-qr-btn" onclick="generateQRCode()">Generate QR</button>
+        <p>Hope to see you all at future events!!</p>
+    </div>
+    <div class="footer">
+        <div class="success"></div>
+        <div class="buttons">
+            <a href="event.ongoing_event.html"><button id="prev-btn">&#129044;</button></a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+    <script>
+        let firstClick = true;
+
+        function generateQRCode() {
+            const baseUrl = "https://docs.google.com/spreadsheets/d/1hh--vw8OCM1ErBIvtXCiHyzOO9SHYX_6ynO6ovFliRk/edit?usp=sharing";
+            const randomParam = Math.random().toString(36).substring(2, 15);
+            const urlWithRandomParam = `${baseUrl}&random=${randomParam}`;
+            
+            const qrcodeContainer = document.getElementById('qrcode');
+            qrcodeContainer.innerHTML = "";
+            new QRCode(qrcodeContainer, {
+                text: urlWithRandomParam,
+                width: 256,
+                height: 256,
+            });
+
+            if (firstClick) {
+                firstClick = false;
+                // Set an interval to automatically generate a new QR code every time the button is clicked
+                document.querySelector('.generate-qr-btn').addEventListener('click', generateQRCode);
+            }
+        }
+    </script>
+</body>
+</html>

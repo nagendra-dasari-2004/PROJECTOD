@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Details</title>
+  <style>
+    body {
+      background-color: #f0e6dc;
+      color: white;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #f0e6dc;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .container > * {
+      margin: 0 10px;
+    }
+
+    .header {
+      display: flex;
+      justify-content:space-between;
+      align-items: center;
+      background-color: #831238;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px 10px 0 0;
+    }
+    .header .menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .header .menu a:hover {
+            background-color: #6d0f2a;
+        }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .button {
+      background-color: #831238;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .button:hover {
+      background-color: #6d0f2a;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #831238;
+      margin-top: 20px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 18px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #666;
+      color: white;
+    }
+
+    .pending {
+      background-color: #ffc107;
+      color: black;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .ongoing {
+      background-color: #28a745;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .arrow {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .icon {
+      font-size: 24px;
+    }
+
+    .details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background-color: #831238;
+      color: white;
+      margin-top: 20px;
+    }
+
+    .details > * {
+      margin: 0 10px;
+    }
+
+    .footer {
+      display: flex;
+      padding: 20px;
+      background-color: #f0e6dc;
+      align-items: center;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    .footer .buttons {
+      display: flex;
+    }
+
+    .footer .buttons a {
+      text-decoration: none;
+      color: white;
+    }
+    .footer button {
+      background-color: #f44336;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 10px;
+      position:relative;
+      left:1350px;
+      bottom: 2px;
+      transition: background-color 0.2s ease;
+    }
+
+    .footer button:hover {
+      background-color: #d32f2f;
+    }
+    
+  </style>
+</head>
+<body>
+    <div class="header">
+        <div class="left">
+            <span>&#127760;</span> LANG
+        </div>
+        <div class="menu">
+          <div>
+            <span id="dept">DEPT: B.E</span>
+          </div>
+          <div>
+            <span>BRANCH: CSE</span>
+          </div>
+          <div>
+            <span>CLASS: 
+                <select id="class-select">
+                <option value="A1">none</option>
+                <option value="A1">A1</option>
+                <option value="A2">A2</option>
+                <option value="A3">A3</option>
+                <option value="A4">A4</option>
+                <option value="A5">A5</option>
+                <option value="B1">B1</option>
+                <option value="B2">B2</option>
+                <option value="B3">B3</option>
+                <option value="B4">B4</option>
+                <option value="B5">B5</option>
+                <option value="C1">C1</option>
+                <option value="C2">C2</option>
+                <option value="C3">C3</option>
+                <option value="C4">C4</option>
+                <option value="C5">C5</option>
+              </select>
+            </span>
+          </div>
+        </div>
+        <div class="right">
+            <span class="icon">&#128276;</span>
+            <span class="icon">&#128100;</span>
+        </div>
+        
+    </div>
+
+  
+    
+    <table class="table" id="student-table">
+      <tr>
+        <th>REGISTER NUMBER</th>
+        <th>EVENT NAME</th>
+        <th>NAME</th>
+        <th>EMAIL ID</th>
+        <th>CURRENT STATUS</th>
+      </tr>
+      <!-- table rows will be generated dynamically -->
+    </table>
+    
+    <script>
+      const classSelect = document.getElementById('class-select');
+      const studentTable = document.getElementById('student-table');
+    
+      classSelect.addEventListener('change', (e) => {
+        const selectedClass = e.target.value;
+        const studentData = getStudentData(selectedClass);
+        generateTableRows(studentData);
+      });
+    
+      function getStudentData(selectedClass) {
+        // dummy data, replace with actual API call or data storage
+        const studentData = {
+          A1: [
+            { registerNumber: '9876543', eventName: 'Event 1', name: 'Krishna', emailId: 'abcdefgh@gmail.com', status: 'PENDING' },
+            { registerNumber: '12345678', eventName: 'Event 2', name: 'Bala', emailId: 'abcdefgh@gmail.com', status: 'ONGOING' },
+          ],
+          A2: [
+            { registerNumber: '21158421', eventName: 'Event 3', name: 'Aravind', emailId: 'abcdefgh@gmail.com', status: 'ONGOING' },
+            { registerNumber: '42110250', eventName: 'Event 4', name: 'Aryan', emailId: 'abcdefgh@gmail.com', status: 'ONGOING' },
+          ],
+          A3: [
+            { registerNumber: '9876543', eventName: 'Event 1', name: 'Krishna', emailId: 'abcdefgh@gmail.com', status: 'PENDING' },
+            { registerNumber: '12345678', eventName: 'Event 2', name: 'Bala', emailId: 'abcdefgh@gmail.com', status: 'ONGOING' },
+          ],
+          A4: [
+            { registerNumber: '9876543', eventName: 'Event 1', name: 'Krishna', emailId: 'abcdefgh@gmail.com', status: 'PENDING' },
+            { registerNumber: '12345678', eventName: 'Event 2', name: 'Bala', emailId: 'abcdefgh@gmail.com', status: 'ONGOING' },
+          ],
+          A5: [
+            { registerNumber: '21158421', eventName: 'Event 3', name: 'Aravind', emailId: 'abcdefgh@gmail.com', status: 'ONGOING' },
+            { registerNumber: '42110250', eventName: 'Event 4', name: 'Aryan', emailId: 'abcdefgh@gmail.com', status: 'ONGOING' },
+          ],
+          B1: [
+            { registerNumber: '9876543', eventName: 'Event 1', name: 'Krishna', emailId: 'abcdefgh@gmail.com', status: 'PENDING' },
+            { registerNumber: '12345678', eventName: 'Event 2', name: 'Bala', emailId: 'abcdefgh@gmail.com', status: 'ONGOING' },
+          ],
+          B2: [
+            { registerNumber: '9876543', eventName: 'Event 1', name: 'Krishna', emailId: 'abcdefgh@gmail.com', status: 'PENDING' },
+            { registerNumber: '12345678', eventName: 'Event 2', name: 'Bala', emailId: 'abcdefgh@gmail.com', status: 'ONGOING' },
+          ],
+          B3: [
+            { registerNumber: '21158421', eventName: 'Event 3', name: 'Aravind', emailId: 'abcdefgh@gmail.com', status: 'ONGOING' },
+            { registerNumber: '42110250', eventName: 'Event 4', name: 'Aryan', emailId: 'abcdefgh@gmail.com', status: 'ONGOING' },
+          ],
+          B4: [
+            { registerNumber: '9876543', eventName: 'Event 1', name: 'Krishna', emailId: 'abcdefgh@gmail.com', status: 'PENDING' },
+            { registerNumber: '12345678', eventName: 'Event 2', name: 'Bala', emailId: 'abcdefgh@gmail.com', status: 'ONGOING' },
+          ],
+          B5: [
+            { registerNumber: '9876543', eventName: 'Event 1', name: 'Krishna', emailId: 'abcdefgh@gmail.com', status: 'PENDING' },
+            { registerNumber: '12345678', eventName: 'Event 2', name: 'Bala', emailId: 'abcdefgh@gmail.com', status: 'ONGOING' },
+          ],
+          C1: [
+            { registerNumber: '21158421', eventName: 'Event 3', name: 'Aravind', emailId: 'abcdefgh@gmail.com', status: 'ONGOING' },
+            { registerNumber: '42110250', eventName: 'Event 4', name: 'Aryan', emailId: 'abcdefgh@gmail.com', status: 'ONGOING' },
+          ],
+          C2: [
+            { registerNumber: '9876543', eventName: 'Event 1', name: 'Krishna', emailId: 'abcdefgh@gmail.com', status: 'PENDING' },
+            { registerNumber: '12345678', eventName: 'Event 2', name: 'Bala', emailId: 'abcdefgh@gmail.com', status: 'ONGOING' },
+          ],
+          C3: [
+            { registerNumber: '9876543', eventName: 'Event 1', name: 'Krishna', emailId: 'abcdefgh@gmail.com', status: 'PENDING' },
+            { registerNumber: '12345678', eventName: 'Event 2', name: 'Bala', emailId: 'abcdefgh@gmail.com', status: 'ONGOING' },
+          ],
+          C4: [
+            { registerNumber: '21158421', eventName: 'Event 3', name: 'Aravind', emailId: 'abcdefgh@gmail.com', status: 'ONGOING' },
+            { registerNumber: '42110250', eventName: 'Event 4', name: 'Aryan', emailId: 'abcdefgh@gmail.com', status: 'ONGOING' },
+          ],
+          C5: [
+            { registerNumber: '9876543', eventName: 'Event 1', name: 'Krishna', emailId: 'abcdefgh@gmail.com', status: 'PENDING' },
+            { registerNumber: '12345678', eventName: 'Event 2', name: 'Bala', emailId: 'abcdefgh@gmail.com', status: 'ONGOING' },
+          ],
+          // add more classes and data here
+        };
+        return studentData[selectedClass];
+      }
+    
+      function generateTableRows(studentData) {
+        studentTable.innerHTML = '';
+        studentTable.innerHTML = `
+          <tr>
+            <th>REGISTER NUMBER</th>
+            <th>EVENT NAME</th>
+            <th>NAME</th>
+            <th>EMAIL ID</th>
+            <th>CURRENT STATUS</th>
+          </tr>
+        `;
+        studentData.forEach((student) => {
+          const tableRow = document.createElement('tr');
+          tableRow.innerHTML = `
+            <td>${student.registerNumber}</td>
+            <td>${student.eventName}</td>
+            <td>${student.name}</td>
+            <td>${student.emailId}</td>
+            <td class="${student.status.toLowerCase()}">${student.status}</td>
+          `;
+          studentTable.appendChild(tableRow);
+        });
+      }
+    </script>
+
+  <div class="footer">
+    <div class="success">
+    </div>
+    <div class="success">
+    </div>
+    <div class="buttons">
+        <a href="teacher.html"><button id="prev-btn">&#129044;</button></a>
+        <a href="class.student mentored.html"><button class="button">&#129046;</button></a>
+    </div>
+</div>
+
+</body>
+</html>

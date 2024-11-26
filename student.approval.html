@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Approval</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+    .header {
+      display: flex;
+      justify-content:space-between;
+      align-items: center;
+      background-color: #831238;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px 10px 0 0;
+    }
+    .header .menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .header .menu a:hover {
+            background-color: #6d0f2a;
+        }
+    .header .icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
+      position: relative;
+    }
+
+    .event-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .event-name {
+      font-size: 1.2em;
+      margin-bottom: 5px;
+    }
+
+    .technical {
+      background-color: #ddd;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-bottom: 5px;
+    }
+
+    .date {
+      margin-bottom: 10px;
+    }
+
+    .venue {
+      margin-bottom: 15px;
+    }
+
+    .button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    .upcoming-events {
+      background-color: #831238;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      display: inline-block;
+      margin-left: 5px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .declined {
+      background-color: #f44336;
+      color: #fff;
+    }
+
+    .approved {
+      background-color: #4caf50;
+      color: #fff;
+    }
+
+    .pending {
+      background-color: #ffeb3b;
+      color: #000;
+    }
+
+    .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        .footer button {
+        background-color: #f44336;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 10px;
+        }
+        .footer button:hover {
+        background-color: #d32f2f;
+        }
+
+    .footer .icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .footer .success {
+      display: flex;
+      align-items: center;
+    }
+
+    .footer .success img {
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+    }
+
+    .details {
+      display: none;
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: center;
+      margin: 20px;
+    }
+
+    .search-container input {
+      width: 300px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+    <div class="header">
+        <div class="left">
+            <span>&#127760;</span> LANG
+        </div>
+        <div class="menu">
+            <a href="student.profile.html">Profile</a>
+            <a href="student.viewevents.html">View an event</a>
+            <a href="student.upcomingevents.html">Upcoming events</a>
+            <a href="student.eventsparticipated.html">Events participated</a>
+            <a href="student.approval.html">Approval</a>
+        </div>
+        <div class="right">
+            <span class="icon">&#128276;</span>
+            <span class="icon">&#128100;</span>
+        </div>
+    </div>
+    <br>
+    <div class="upcoming-events">APPROVAL</div>
+    <div class="search-container">
+      <input type="text" id="search" placeholder="Search events">
+    </div>
+    <div class="main" id="events-container">
+        <div class="card">
+          <img src="Chancellor.jpg" alt="Event Image" class="event-image">
+          <div class="event-name">EVENT NAME</div>
+          <div class="technical">TECHNICAL</div>
+          <div class="date">00/00/0000</div>
+          <div class="venue">REMIBAI AUDITORIUM</div>
+          <button class="button declined">DECLINED</button>
+          <div class="details">This is a technical event at REMIBAI AUDITORIUM. Date: 00/00/0000.</div>
+        </div>
+        <div class="card">
+          <img src="Chancellor.jpg" alt="Event Image" class="event-image">
+          <div class="event-name">EVENT NAME</div>
+          <div class="technical">TECHNICAL</div>
+          <div class="date">00/00/0000</div>
+          <div class="venue">ECE SEMINAR HALL</div>
+          <button class="button approved">APPROVED</button>
+          <div class="details">This is a technical event at ECE SEMINAR HALL. Date: 00/00/0000.</div>
+        </div>
+        <div class="card">
+          <img src="Chancellor.jpg" alt="Event Image" class="event-image">
+          <div class="event-name">EVENT NAME</div>
+          <div class="technical">TECHNICAL</div>
+          <div class="date">00/00/0000</div>
+          <div class="venue">ECE SEMINAR HALL</div>
+          <button class="button pending">STATUS PENDING</button>
+          <div class="details">This is a technical event at ECE SEMINAR HALL. Date: 00/00/0000.</div>
+        </div>
+    </div>
+    <br>
+
+
+  </br>
+  <br>
+<br>
+  
+  </br>
+      <div class="footer">
+          <div class="success">
+
+          </div>
+          <div class="buttons">
+              <a href="student.eventsparticipated.html"><button id="prev-btn">&#129044;</button></a>
+          </div>
+      </div>
+
+  <script>
+    // Function to handle button clicks
+const buttons = document.querySelectorAll('.button');
+
+buttons.forEach(button => {
+  if (button.classList.contains('declined') || button.classList.contains('approved') || button.classList.contains('pending')) {
+    button.disabled = true;
+  } else {
+    button.addEventListener('click', () => {
+      // Confirmation dialog
+      const confirmation = confirm('Are you sure you want to change the status of this event?');
+      if (confirmation) {
+        // Handle button clicks based on their class
+        if (button.classList.contains('declined')) {
+          alert('Event Declined');
+          button.textContent = 'DECLINED';
+          button.classList.remove('approved', 'pending');
+          button.classList.add('declined');
+        } else if (button.classList.contains('approved')) {
+          alert('Event Approved');
+          button.textContent = 'APPROVED';
+          button.classList.remove('declined', 'pending');
+          button.classList.add('approved');
+        } else if (button.classList.contains('pending')) {
+          alert('Event Status Pending');
+          button.textContent = 'STATUS PENDING';
+          button.classList.remove('declined', 'approved');
+          button.classList.add('pending');
+        }
+      }
+    });
+  }
+});
+  </script>
+</body>
+</html>
